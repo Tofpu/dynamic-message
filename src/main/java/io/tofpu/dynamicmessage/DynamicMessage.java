@@ -9,7 +9,7 @@ public final class DynamicMessage {
     private static final DynamicMessage INSTANCE = new DynamicMessage();
     private final Map<Class<? extends MessageHolder>, MessageHolder> messageHolderMap;
 
-    public static DynamicMessage getInstance() {
+    public static DynamicMessage get() {
         return INSTANCE;
     }
 

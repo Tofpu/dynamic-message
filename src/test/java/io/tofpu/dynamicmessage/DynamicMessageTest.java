@@ -18,7 +18,7 @@ public class DynamicMessageTest {
 
     @Test
     public void test_message() {
-        final MessageDemo demo = DynamicMessage.getInstance().as(MessageDemo.class);
+        final MessageDemo demo = DynamicMessage.get().as(MessageDemo.class);
         demo.constructFile();
 
         assertEquals("Hello World Two", demo.message);
