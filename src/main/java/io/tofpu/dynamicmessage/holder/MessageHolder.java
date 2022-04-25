@@ -1,6 +1,6 @@
-package io.tofpu.dynamicmessages.holder;
+package io.tofpu.dynamicmessage.holder;
 
-import io.tofpu.dynamicmessages.holder.writer.MessageWriter;
+import io.tofpu.dynamicmessage.holder.writer.MessageWriter;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,6 @@
-package io.tofpu.dynamicmessages;
+package io.tofpu.dynamicmessage;
 
-import io.tofpu.dynamicmessages.holder.MessageHolder;
+import io.tofpu.dynamicmessage.holder.MessageHolder;
 
 import java.util.HashMap;
 import java.util.Map;

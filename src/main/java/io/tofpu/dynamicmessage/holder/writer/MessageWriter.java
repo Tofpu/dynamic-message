@@ -1,7 +1,7 @@
-package io.tofpu.dynamicmessages.holder.writer;
+package io.tofpu.dynamicmessage.holder.writer;
 
-import io.tofpu.dynamicmessages.holder.MessageHolder;
-import io.tofpu.dynamicmessages.util.ReflectionUtils;
+import io.tofpu.dynamicmessage.holder.MessageHolder;
+import io.tofpu.dynamicmessage.util.ReflectionUtils;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

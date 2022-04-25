@@ -1,7 +1,6 @@
-package io.tofpu.dynamicmessages;
+package io.tofpu.dynamicmessage;
 
-import io.tofpu.dynamicmessages.holder.MessageHolder;
-import io.tofpu.dynamicmessages.holder.writer.MessageWriter;
+import io.tofpu.dynamicmessage.holder.MessageHolder;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

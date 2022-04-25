@@ -1,4 +1,4 @@
-package io.tofpu.dynamicmessages.util;
+package io.tofpu.dynamicmessage.util;
 
 import java.lang.reflect.Field;
 

@@ -1,2 +1,2 @@
-rootProject.name = "dynamic-messages"
+rootProject.name = "dynamic-message"
 
