@@ -8,17 +8,17 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DynamicMessageTest {
-    public static class DynamicClassDemo extends MessageHolder {
+    public static class MessageDemo extends MessageHolder {
         public String message = "Hello World";
 
-        public DynamicClassDemo() {
+        public MessageDemo() {
             super(new File("src/test/resources/messages.yml"));
         }
     }
 
     @Test
-    public void testDynamicMessage() {
-        final DynamicClassDemo demo = DynamicMessage.getInstance().as(DynamicClassDemo.class);
+    public void test_message() {
+        final MessageDemo demo = DynamicMessage.getInstance().as(MessageDemo.class);
         demo.constructFile();
 
         assertEquals("Hello World Two", demo.message);
