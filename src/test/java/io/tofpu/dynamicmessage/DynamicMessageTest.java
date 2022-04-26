@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DynamicMessageTest {
     public static class MessageDemo extends MessageHolder {
@@ -17,7 +18,21 @@ public class DynamicMessageTest {
     }
 
     @Test
-    public void test_message() {
+    public void message_creation() {
+        final MessageDemo demo = DynamicMessage.get().create(MessageDemo.class);
+
+        assertNotNull(demo, "MessageDemo should not be null");
+    }
+
+    @Test
+    public void message_retrieval() {
+        final MessageDemo demo = DynamicMessage.get().as(MessageDemo.class);
+
+        assertNotNull(demo, "MessageDemo should not be null");
+    }
+
+    @Test
+    public void message_file_construction() {
         final MessageDemo demo = DynamicMessage.get().as(MessageDemo.class);
         demo.constructFile();
 
