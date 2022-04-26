@@ -3,7 +3,7 @@ Have you ever wanted to add a way for the user-end to be able to customize the m
 
 ## Example
 ```java
-public class DynamicMessageTest {
+public class Example {
     public static class MessageDemo extends MessageHolder {
         public String message = "Hello World";
 
@@ -12,13 +12,16 @@ public class DynamicMessageTest {
         }
     }
 
-    public void testDynamicMessage() {
-        // retrieving an instance of MessageDemo
-        final MessageDemo messageDemo = DynamicMessage.get().as(MessageDemo.class);
-        // constructing the file
-        messageDemo.constructFile();
+    public void run() {
+        // creates an instance of MessageDemo, and stores it to a map for ease of retrieval
+        // be aware that this will create a file synchronously
+        final MessageDemo demo = DynamicMessage.get().create(MessageDemo.class);
 
-        assertEquals("Hello World Two", demo.messageDemo);
+        // you can also retrieve the message class via as(Class) method
+        final MessageDemo demo2 = DynamicMessage.get().as(MessageDemo.class);
+
+        // you can grab the message values as usual
+        System.out.println(demo.message);
     }
 }
 ```
