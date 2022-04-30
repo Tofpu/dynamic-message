@@ -1,6 +1,7 @@
 package io.tofpu.dynamicmessage;
 
 import io.tofpu.dynamicmessage.holder.MessageHolder;
+import io.tofpu.dynamicmessage.holder.meta.SkipMessage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -16,6 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class DynamicMessageTest {
     public static class MessageDemo extends MessageHolder {
         public String message = "Hello World";
+
+        @SkipMessage
+        public int number = 1;
 
         public MessageDemo() {
             super(new File("src/test/resources/messages.yml"));

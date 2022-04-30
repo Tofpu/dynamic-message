@@ -1,6 +1,6 @@
 package io.tofpu.dynamicmessage.holder;
 
-import io.tofpu.dynamicmessage.holder.writer.MessageWriter;
+import io.tofpu.dynamicmessage.holder.writer.MessageWriterBase;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
 public class MessageHolder {
     private final Field[] cachedFields;
     private final File messageFile;
-    private final MessageWriter messageWriter;
+    private final MessageWriterBase messageWriter;
 
     protected MessageHolder(final File messageFile) {
         this.cachedFields = this.getClass().getDeclaredFields();
@@ -66,8 +66,8 @@ public class MessageHolder {
      *
      * @return the messageWriter to be used
      */
-    protected MessageWriter constructMessageWriter() {
-        return new MessageWriter.DefaultMessageWriter();
+    protected MessageWriterBase constructMessageWriter() {
+        return new MessageWriterBase.DefaultMessageWriter();
     }
 
     /**

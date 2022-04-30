@@ -1,6 +1,7 @@
 package io.tofpu.dynamicmessage.holder.writer;
 
 import io.tofpu.dynamicmessage.holder.MessageHolder;
+import io.tofpu.dynamicmessage.holder.meta.SkipMessage;
 import io.tofpu.dynamicmessage.util.ReflectionUtils;
 
 import java.io.BufferedReader;
@@ -13,16 +14,24 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-public interface MessageWriter {
-    void writeToFile(final MessageHolder holder);
+public abstract class MessageWriterBase {
+    public abstract void writeToFile(final MessageHolder holder);
 
-    void readFromFile(final MessageHolder holder);
+    public abstract void readFromFile(final MessageHolder holder);
 
-    class DefaultMessageWriter implements MessageWriter {
+    public boolean isSkippable(final Field field) {
+        return field.isAnnotationPresent(SkipMessage.class);
+    }
+
+    public static class DefaultMessageWriter extends MessageWriterBase {
         @Override
         public void writeToFile(final MessageHolder holder) {
             final Map<String, String> messages = new HashMap<>();
             for (final Field field : holder.getCachedFields()) {
+                if (isSkippable(field)) {
+                    continue;
+                }
+
                 if (field.getType() != String.class) {
                     throw new IllegalStateException(
                             "Field " + field.getName() + " is not of type String");
