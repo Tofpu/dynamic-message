@@ -66,7 +66,7 @@ public abstract class MessageWriterBase {
                     final String[] split = line.split(": ");
 
                     final String key = split[0].replace("_", " ");
-                    final String value = substring(split, 1).replace(" ", "")
+                    final String value = substring(split, 1).replaceFirst(" ", "")
                             .replace("\\n", "\n");
 
                     for (final Field field : holder.getCachedFields()) {
