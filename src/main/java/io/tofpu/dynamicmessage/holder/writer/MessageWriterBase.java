@@ -45,7 +45,7 @@ public abstract class MessageWriterBase {
                 builder.append(entry.getKey()
                                 .replace(" ", "_"))
                         .append(": ")
-                        .append(entry.getValue())
+                        .append(entry.getValue().replace("\n", "\\n"))
                         .append("\n");
             }
 
@@ -70,7 +70,7 @@ public abstract class MessageWriterBase {
                     }
 
                     final String key = split[0].replace("_", " ");
-                    final String value = split[1];
+                    final String value = split[1].replace("\\n", "\n");
 
                     for (final Field field : holder.getCachedFields()) {
                         if (!field.getName()
