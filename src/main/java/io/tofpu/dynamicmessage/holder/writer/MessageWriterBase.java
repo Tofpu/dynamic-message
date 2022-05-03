@@ -42,8 +42,7 @@ public abstract class MessageWriterBase {
 
             final StringBuilder builder = new StringBuilder();
             for (final Map.Entry<String, String> entry : messages.entrySet()) {
-                builder.append(entry.getKey()
-                                .replace(" ", "_"))
+                builder.append(entry.getKey())
                         .append(": ")
                         .append("\"")
                         .append(entry.getValue()
@@ -105,7 +104,7 @@ public abstract class MessageWriterBase {
             final StringBuilder builder = new StringBuilder();
             for (int i = startIndex; i < array.length; i++) {
                 if (i != startIndex) {
-                    builder.append(":");
+                    builder.append(": ");
                 }
                 builder.append(array[i]);
             }

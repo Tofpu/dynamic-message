@@ -16,7 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DynamicMessageTest {
     public static class MessageDemo extends MessageHolder {
-        public String message = "Hello World";
+        public String message = "Hello\n World";
+        public String helloWorldTest = "Hello: World: Test";
 
         @SkipMessage
         public int number = 1;
@@ -47,7 +48,8 @@ public class DynamicMessageTest {
     public void message_compare_initial() {
         final MessageDemo demo = DynamicMessage.get().as(MessageDemo.class);
 
-        assertEquals("Hello World", demo.message);
+        assertEquals("Hello\n World", demo.message);
+        assertEquals("Hello: World: Test", demo.helloWorldTest);
     }
 
     @Test
@@ -55,7 +57,8 @@ public class DynamicMessageTest {
     public void message_compare_update_one() {
         final MessageDemo demo = DynamicMessage.get().as(MessageDemo.class);
 
-        demo.message = "Hello World Updated";
+        demo.message = "Hello\n World Updated";
+        demo.helloWorldTest = "Hello: World: Test Updated";
         demo.save();
 
         DynamicMessage.get().unload(MessageDemo.class);
@@ -66,7 +69,8 @@ public class DynamicMessageTest {
     public void message_compare_update_two() {
         final MessageDemo demo = DynamicMessage.get().create(MessageDemo.class);
 
-        assertEquals("Hello World Updated", demo.message);
+        assertEquals("Hello\n World Updated", demo.message);
+        assertEquals("Hello: World: Test Updated", demo.helloWorldTest);
     }
 
     @AfterAll
