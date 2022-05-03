@@ -65,12 +65,9 @@ public abstract class MessageWriterBase {
                     final String line = reader.readLine();
                     final String[] split = line.split(": ");
 
-                    if (split.length != 2) {
-                        throw new IllegalStateException("Invalid line in file: " + line);
-                    }
-
                     final String key = split[0].replace("_", " ");
-                    final String value = split[1].replace("\\n", "\n");
+                    final String value = substring(split, 1).replace(" ", "")
+                            .replace("\\n", "\n");
 
                     for (final Field field : holder.getCachedFields()) {
                         if (!field.getName()
@@ -91,6 +88,18 @@ public abstract class MessageWriterBase {
                                                 holder.getMessageFile()
                                                         .getAbsolutePath(), e);
             }
+        }
+
+
+        private String substring(final String[] array, final int startIndex) {
+            final StringBuilder builder = new StringBuilder();
+            for (int i = startIndex; i < array.length; i++) {
+                if (i != startIndex) {
+                    builder.append(":");
+                }
+                builder.append(array[i]);
+            }
+            return builder.toString();
         }
     }
 }
